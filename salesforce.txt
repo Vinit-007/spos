@@ -1,0 +1,29 @@
+public class CalculateAge
+{  
+    public Integer age {get; set;}    
+    public Date dt {get; set;}
+    
+    public void FindAge()
+    {
+        Integer days = dt.daysBetween(Date.Today());
+        age = Integer.valueOf(days/365);
+    }
+}
+
+
+
+
+<apex:page doctype="html-5.0" controller="CalculateAge">
+    <apex:form>
+        <apex:pageblock title="Calculate Age From Date of Birth">
+            <apex:pageblocksection>
+                <apex:pageblocksectionitem>Date of Birth:
+                    <apex:inputtext onfocus="DatePicker.pickDate(true, this , false);" value="{!dt}"></apex:inputtext></apex:pageblocksectionitem>
+                    <apex:commandbutton value="Get Age" action="{!FindAge}"></apex:commandbutton>
+                    <apex:pageblocksectionitem>Age:           
+                    <apex:outputtext value="{!age}"></apex:outputtext>
+                </apex:pageblocksectionitem>           
+            </apex:pageblocksection>
+        </apex:pageblock>
+    </apex:form>   
+</apex:page>
